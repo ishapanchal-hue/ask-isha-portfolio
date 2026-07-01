@@ -867,7 +867,8 @@ function filterQs(v){
 // ═══════════════════════════════════════════════════════
 function showLanding(){
   const cb=document.getElementById('chatBody');
-  const qs=QUESTIONS.slice(0,8);
+  const landingIds=[22,2,16,4,6,23,11,12];
+  const qs=landingIds.map(id=>QUESTIONS.find(q=>q.id===id)).filter(Boolean);
   cb.innerHTML=`
     <div class="landing" id="landing">
       <div class="landing-eyebrow">AI Portfolio Experience</div>
@@ -982,13 +983,28 @@ function buildAnswerContent(id){
 
   if(id===2) return `
     ${paras}
-    <div class="badge-row" style="margin-top:8px">
+    <div style="display:flex;flex-direction:column;gap:7px;margin-top:10px">
+      ${[
+        {icon:'🌊', t:'ARGO AI Platform',  tag:'Winner · INTECH 2K26', img:'argo_chat'},
+        {icon:'💊', t:'Prescription Scanner', tag:'Healthcare OCR', img:'rx_result'},
+        {icon:'📦', t:'AI Inventory Intelligence', tag:'SIH 2025 Shortlisted', img:'sg_dashboard'},
+        {icon:'🌱', t:'SmartGrow', tag:'Published · ICCCNT', img:'sg_prototype'},
+      ].map((p,i)=>`
+        <div onclick="askQ(2);setTimeout(()=>document.getElementById('rightPanel').scrollIntoView&&0,50)" style="display:flex;gap:10px;align-items:center;padding:9px 11px;border-radius:var(--radius);background:var(--surface2);border:1px solid var(--border);animation:fadeUp 0.3s ease forwards;opacity:0;animation-delay:${i*0.07}s;cursor:default">
+          <div style="font-size:18px;flex-shrink:0">${p.icon}</div>
+          <div style="flex:1">
+            <div style="font-size:12.5px;font-weight:600;color:var(--text)">${p.t}</div>
+            <div style="font-size:10.5px;color:var(--primary);margin-top:1px">${p.tag}</div>
+          </div>
+        </div>`).join('')}
+    </div>
+    <div class="badge-row" style="margin-top:10px">
       <span class="badge blue">AI/ML</span><span class="badge purple">Computer Vision</span>
       <span class="badge amber">IoT</span><span class="badge green">Full Stack</span>
     </div>
     <div class="action-row">
       <a href="https://github.com/ishapanchal-hue" target="_blank" class="act-btn ghost">⚡ GitHub</a>
-      <a href="https://nemoai.vercel.app/dashboard" target="_blank" class="act-btn solid">🌐 Live Demo — ARGO</a>
+      <a href="https://nemoai.vercel.app/dashboard" target="_blank" class="act-btn ghost">🌐 ARGO Demo</a>
     </div>`;
 
   if(id===3) return `
@@ -1482,11 +1498,16 @@ function rProjects(el){el.innerHTML=`<div class="r-section">
       </div></div>
     </div>
   </div>
-  <div class="proj-card"><div class="proj-body" style="padding-top:12px">
-    <div class="proj-name">AI-Powered Inventory & Demand Intelligence</div>
-    <div class="proj-sum">Demand forecasting and expiry-risk prediction.</div>
-    <div class="proj-tags"><span class="ptag">Python</span><span class="ptag">ML</span><span class="ptag">Forecasting</span></div>
-    <div class="proj-btns"><a href="https://github.com/ishapanchal-hue" target="_blank" class="pbtn ghost">⚡ GitHub</a></div>
+  <div class="proj-card">
+    <img class="proj-thumb" src="${ASSETS.sg_dashboard}" alt="Inventory Intelligence">
+    <div class="proj-body">
+    <div class="proj-name">AI Inventory & Demand Intelligence</div>
+    <div class="proj-sum">SIH 2025 shortlisted. Demand forecasting, expiry-risk prediction, and automated smart discounting for perishables.</div>
+    <div class="proj-tags"><span class="ptag">Next.js</span><span class="ptag">FastAPI</span><span class="ptag">TensorFlow</span><span class="ptag">PostgreSQL</span></div>
+    <div class="proj-btns">
+      <a href="https://github.com/ishapanchal-hue" target="_blank" class="pbtn ghost">⚡ GitHub</a>
+      <span class="ptag" style="background:var(--primary-soft);color:var(--primary);border-color:rgba(232,83,143,0.2)">🚀 Live demo coming soon</span>
+    </div>
   </div></div>
   <div class="proj-card">
     <img class="proj-thumb" src="${ASSETS.sg_prototype}" alt="SmartGrow">
@@ -1705,11 +1726,68 @@ function toggleExpand(btn){
   const o=c.classList.toggle('open');
   btn.textContent=(o?'▾':'▸')+btn.textContent.slice(1);
 }
+// Keyword bank per question — covers paraphrases, synonyms, casual phrasing
+const Q_KEYWORDS = {
+  1:  ['who are you','about you','tell me about yourself','introduce','background','beyond resume','who is isha'],
+  2:  ['project','projects','built','work on','portfolio','what have you made','what did you build','things youve made'],
+  3:  ['research','publication','published','paper','smartgrow research','icccnt','study'],
+  4:  ['technology','technologies','tech stack','tools','languages','programming language','what do you know','skills you use','frameworks'],
+  5:  ['industry experience','internship','internships','work experience','job experience','companies worked','professional experience'],
+  6:  ['lead team','led team','leadership','manage people','manager','team lead','leading'],
+  7:  ['marketing','community','brand','campaign','social media marketing','promotion'],
+  8:  ['content creation','content','creating content','social media content','writing content'],
+  9:  ['problems you enjoy','what problems','type of problems','kind of problems','interesting problems'],
+  10: ['challenge','difficult','hard time','obstacle','struggle','tough situation'],
+  11: ['hire you','why hire','why should we','why pick you','why you','strengths','what makes you'],
+  12: ['resume','cv','see your resume','download resume','your cv'],
+  13: ['not on resume','off resume','something else about you','beyond the resume','hidden talent'],
+  14: ['outside tech','outside of tech','hobbies','free time','non technical','personal life','what do you do for fun'],
+  15: ['approach a project','build a project','approach to building','start a project','project approach','how do you build'],
+  16: ['proud of','proudest','technical challenge','hardest project','most challenging'],
+  17: ['currently learning','learning now','what are you learning','studying now','upskilling'],
+  18: ['workflow','development process','how do you work','dev process','coding process'],
+  19: ['why ai','why machine learning','why ml','interested in ai','passion for ai'],
+  20: ['technical profile','full stack','dashboard','show me your skills','tech dashboard','skill dashboard'],
+  21: ['community impact','impact community','reach','events hosted','grew community'],
+  22: ['60 second','recruiter','quick summary','elevator pitch','tldr','summary about you','recruiter brief'],
+  23: ['academic','gpa','cgpa','grades','marks','academic credentials','college','university'],
+  24: ['dsa','data structures','algorithms','leetcode','competitive programming','dsa skills'],
+  25: ['certifications','certificates','certs','courses completed','credentials earned'],
+  26: ['roles targeting','what roles','job roles','looking for','career goals','target role','position'],
+  27: ['unexpected','surprising','fun fact','interesting fact','random fact','something unexpected'],
+};
+
+function findBestQuestionMatch(input){
+  const lv = input.toLowerCase().trim();
+  let bestId = null, bestScore = 0;
+
+  QUESTIONS.forEach(q=>{
+    let score = 0;
+    // exact or near-exact question text match
+    if(lv === q.text.toLowerCase() || lv === q.short.toLowerCase().replace('?','')) score += 100;
+    if(q.text.toLowerCase().includes(lv) && lv.length > 4) score += 40;
+    if(lv.includes(q.short.toLowerCase().replace('?','').trim()) && q.short.length > 4) score += 40;
+    // keyword bank scoring
+    const kws = Q_KEYWORDS[q.id] || [];
+    kws.forEach(kw=>{
+      if(lv.includes(kw)) score += 25;
+    });
+    // word overlap fallback
+    const qWords = (q.text.toLowerCase()+' '+q.short.toLowerCase()).split(/\W+/).filter(w=>w.length>3);
+    const inWords = lv.split(/\W+/).filter(w=>w.length>3);
+    inWords.forEach(w=>{ if(qWords.includes(w)) score += 6; });
+
+    if(score > bestScore){ bestScore = score; bestId = q.id; }
+  });
+
+  return bestScore >= 20 ? bestId : null;
+}
+
 function sendCustom(){
   const inp=document.getElementById('chatInp');
   const val=inp.value.trim();if(!val)return;inp.value='';
-  const match=QUESTIONS.find(q=>q.text.toLowerCase().includes(val.toLowerCase())||val.toLowerCase().includes(q.short.toLowerCase().replace('?','').trim()));
-  if(match){askQ(match.id);return;}
+  const matchId = findBestQuestionMatch(val);
+  if(matchId){askQ(matchId);return;}
   const landing=document.getElementById('landing');if(landing)landing.remove();
   addUserMsg(val);const tid=addTyping();
   setTimeout(()=>{
@@ -1757,6 +1835,7 @@ function globalKey(e){if((e.ctrlKey||e.metaKey)&&e.key==='k'){e.preventDefault()
 function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800);}
 
 init();
+
 
 </script>
 </body>
