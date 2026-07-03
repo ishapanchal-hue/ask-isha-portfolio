@@ -4,6 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ask Isha — AI Portfolio</title>
+<meta property="og:title" content="Ask Isha — AI Portfolio">
+<meta property="og:description" content="An interactive AI portfolio — ask Isha anything about her projects, skills, and experience.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ishapanchal-hue.github.io/ask-isha-portfolio/">
+<meta property="og:image" content="https://ishapanchal-hue.github.io/ask-isha-portfolio/preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ask Isha — AI Portfolio">
+<meta name="twitter:description" content="An interactive AI portfolio — ask Isha anything about her projects, skills, and experience.">
+<meta name="description" content="An interactive AI portfolio — ask Isha anything about her projects, skills, and experience.">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -765,7 +775,7 @@ const ANSWERS = {
 I prefer shipping a working version early, gathering feedback, and improving it over time rather than trying to build the perfect solution from day one.
 
 This approach has helped me work on projects ranging from AI-powered applications and research projects to community initiatives and event execution.`,
-  16:`One challenge I'm particularly proud of was building the AI-Driven Conversational Intelligence Platform for ARGO Oceanographic Data — our TY Major Project, which won at KJSIT-IET-INTECH 2K26.
+  16:`One challenge I'm particularly proud of was building the AI-Driven Conversational Intelligence Platform for ARGO Oceanographic Data — our Final Year Major Project, which won at KJSIT-IET-INTECH 2K26.
 
 The system combines a FastAPI backend, PostgreSQL database with 4,074+ ARGO float records, Gemini API for NL-to-SQL translation via RAG, and a React + TypeScript frontend with Plotly.js and Leaflet.js visualizations. It achieves 90%+ accuracy in converting natural language ocean queries into valid SQL — without the user needing to know SQL or NetCDF formats.
 
@@ -799,13 +809,13 @@ Whether you're a recruiter, a fellow student, or just someone who wants to chat 
 
   22:`Here's what matters most:
 
-Third-year Computer Engineering student at K J Somaiya Institute of Technology (GPA 8.6/10), graduating 2026. I build full-stack AI products — my major project ARGO won at KJSIT-IET-INTECH 2K26 and achieves 90%+ NL-to-SQL accuracy. I've shipped a healthcare OCR system, an IoT research paper published at ICCCNT, and an SIH 2025 shortlisted inventory intelligence platform.
+Final-year Computer Engineering student at K J Somaiya Institute of Technology (GPA 8.6/10), graduating 2027. I build full-stack AI products — my major project ARGO won at KJSIT-IET-INTECH 2K26 and achieves 90%+ NL-to-SQL accuracy. I've shipped a healthcare OCR system, an IoT research paper published at ICCCNT, and an SIH 2025 shortlisted inventory intelligence platform.
 
 Outside code: PR Head of Student Council, Mumbai City Lead for Under 25, public speaker. I pick things up fast, take ownership, and I ship.
 
-Open to SDE, AI/ML Engineer, and Data roles — Mumbai and remote.`,
+Open to SDE, AI/ML Engineer, and Data roles — Mumbai and remote. Graduating 2027.`,
 
-  23:`I'm in my third year of Computer Engineering at K J Somaiya Institute of Technology, affiliated to the University of Mumbai.
+  23:`I'm in my final year of Computer Engineering at K J Somaiya Institute of Technology, affiliated to the University of Mumbai.
 
 Current GPA: 8.6/10 up to Semester 6.
 
@@ -823,7 +833,7 @@ These sit alongside academic coursework and project experience in AI/ML, backend
 
 I bring a combination that's rare at the undergraduate level: I can build production-ready backends, train and deploy ML models, and communicate results clearly to non-technical stakeholders.
 
-Open to Mumbai-based, remote, and hybrid opportunities. Graduating 2026.`,
+Open to Mumbai-based, remote, and hybrid opportunities. Graduating 2027.`,
 
   27:`I've been a trained Bharatnatyam classical dancer since childhood — the kind of discipline and precision that comes from years of classical training has shaped how I approach technical problems more than I expected.
 
@@ -878,7 +888,7 @@ function showLanding(){
     <div class="landing" id="landing">
       <div class="landing-eyebrow">AI Portfolio Experience</div>
       <div class="landing-h1">Hi, I'm <em>Isha Panchal</em>.</div>
-      <div class="landing-desc">Third-year Computer Engineering student. I build AI products, lead communities, and turn ideas into reality.<br><br><strong>Most portfolios tell you what someone has done. This one lets you ask.</strong></div>
+      <div class="landing-desc">Final-year Computer Engineering student. I build AI products, lead communities, and turn ideas into reality.<br><br><strong>Most portfolios tell you what someone has done. This one lets you ask.</strong></div>
       <div class="landing-chips">
         ${['AI/ML Builder','Researcher','Community Leader','Public Speaker'].map(r=>`<span class="l-chip">${r}</span>`).join('')}
       </div>
@@ -950,7 +960,7 @@ function addTyping(){
   const id='tp'+Date.now();
   const d=document.createElement('div');
   d.className='msg ai';d.id=id;
-  d.innerHTML=`<div class="av-wrap"><div class="av-ai">🌺</div></div><div class="msg-content"><div class="bubble ai"><div class="typing-dots"><span></span><span></span><span></span></div></div></div>`;
+  d.innerHTML=`<div class="av-wrap"><img src="${ASSETS.profile_casual}" style="width:28px;height:28px;border-radius:50%;object-fit:cover;border:1px solid var(--border);flex-shrink:0;display:block" alt="Isha"></div><div class="msg-content"><div class="bubble ai"><div class="typing-dots"><span></span><span></span><span></span></div></div></div>`;
   cb.appendChild(d);sc();return id;
 }
 
@@ -960,7 +970,7 @@ function addAnswer(id){
   d.className='msg ai';
   const content=buildAnswerContent(id);
   d.innerHTML=`
-    <div class="av-wrap"><div class="av-ai">🌺</div></div>
+    <div class="av-wrap"><img src="${ASSETS.profile_casual}" style="width:28px;height:28px;border-radius:50%;object-fit:cover;border:1px solid var(--border);flex-shrink:0;display:block" alt="Isha"></div>
     <div class="msg-content">
       <div class="bubble ai"><div class="answer-body">${content}</div></div>
       ${buildSuggested(id)}
@@ -1269,7 +1279,7 @@ function buildAnswerContent(id){
           {icon:'🔬', label:'Research',    val:'SmartGrow IoT · Published at ICCCNT · 18% water savings'},
           {icon:'💼', label:'Experience',  val:'3 internships · AI/ML, SWE Testing, Brand Marketing'},
           {icon:'👑', label:'Leadership',  val:'PR Head · Marketing Head CSI · Mumbai City Lead Under 25'},
-          {icon:'🎯', label:'Target',      val:'SDE / AI-ML Engineer / Data Engineering · Graduating 2026'},
+          {icon:'🎯', label:'Target',      val:'SDE / AI-ML Engineer / Data Engineering · Graduating 2027'},
         ].map(r=>`
           <div style="display:flex;gap:9px;align-items:flex-start">
             <span style="font-size:14px;flex-shrink:0;margin-top:1px">${r.icon}</span>
@@ -1290,7 +1300,7 @@ function buildAnswerContent(id){
     <div class="stat-row" style="margin-top:10px">
       <div class="stat-card"><div class="stat-num">8.6</div><div class="stat-lbl">GPA / 10<br>Sem 1–6</div></div>
       <div class="stat-card"><div class="stat-num">TY</div><div class="stat-lbl">Computer Engineering<br>2025–26</div></div>
-      <div class="stat-card"><div class="stat-num">2026</div><div class="stat-lbl">Expected Graduation</div></div>
+      <div class="stat-card"><div class="stat-num">2027</div><div class="stat-lbl">Expected Graduation</div></div>
     </div>
     <div class="badge-row" style="margin-top:8px">
       <span class="badge blue">K J Somaiya Institute of Technology</span>
@@ -1351,7 +1361,7 @@ function buildAnswerContent(id){
         </div>`).join('')}
     </div>
     <div class="highlight-block" style="margin-top:10px">
-      <strong>Open to:</strong> Mumbai-based, remote, and hybrid. Graduating 2026. Immediately available for internships and full-time.
+      <strong>Open to:</strong> Mumbai-based, remote, and hybrid. Graduating 2027. Immediately available for internships and full-time.
     </div>`;
 
   if(id===27) return `
@@ -1683,7 +1693,7 @@ function rRecruiter(el){el.innerHTML=`<div class="r-section">
   <div style="border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:10px">
     <div style="padding:12px 13px;background:var(--surface2);border-bottom:1px solid var(--border)">
       <div style="font-size:13px;font-weight:700;color:var(--text);font-family:'Space Grotesk',sans-serif">Isha Panchal</div>
-      <div style="font-size:11px;color:var(--primary);margin-top:2px">SDE · AI/ML · Data · Graduating 2026</div>
+      <div style="font-size:11px;color:var(--primary);margin-top:2px">SDE · AI/ML · Data · Graduating 2027</div>
     </div>
     <div style="padding:12px 13px;display:flex;flex-direction:column;gap:7px">
       ${[
@@ -1765,6 +1775,40 @@ function toggleExpand(btn){
   const o=c.classList.toggle('open');
   btn.textContent=(o?'▾':'▸')+btn.textContent.slice(1);
 }
+
+// Greeting detection
+const GREETINGS = ['hi','hello','hey','hii','hiii','hiiii','heyy','heyyy','howdy','sup','what\'s up','whats up','yo','namaste','good morning','good afternoon','good evening','greetings','hola'];
+function isGreeting(val){
+  const lv = val.toLowerCase().trim().replace(/[!?.]+$/,'');
+  return GREETINGS.some(g => lv === g || lv === g+'!' || lv.startsWith(g+' '));
+}
+
+function handleGreeting(val){
+  const landing = document.getElementById('landing');
+  if(landing) landing.remove();
+  addUserMsg(val);
+  const tid = addTyping();
+  const greetingReplies = [
+    `Hey there! 👋 Great to have you here.\n\nI'm Isha's interactive portfolio — think of me as a more interesting alternative to a resume. You can ask me anything about Isha's projects, skills, experience, or background.\n\nNot sure where to start? Try asking something like "What projects has she worked on?" or "Why should I hire her?" 🌺`,
+    `Hello! 😊 Welcome to Ask Isha.\n\nInstead of scrolling through a boring portfolio, you can just... ask. Questions about projects, tech stack, leadership, research — anything goes.\n\nWhat would you like to know? You can type freely or pick a question from the left!`,
+    `Hi! 👋 Nice to meet you.\n\nThis is Isha's AI portfolio — built so you can have an actual conversation instead of reading a wall of text.\n\nFeel free to ask me anything — about her work, her projects, her experience, or even something unexpected. I'll do my best to answer! 🌺`,
+  ];
+  const reply = greetingReplies[Math.floor(Math.random()*greetingReplies.length)];
+  setTimeout(()=>{
+    removeEl(tid);
+    const cb = document.getElementById('chatBody');
+    const d = document.createElement('div');
+    d.className = 'msg ai';
+    d.innerHTML = `
+      <div class="av-wrap"><img src="${ASSETS.profile_casual}" style="width:28px;height:28px;border-radius:50%;object-fit:cover;border:1px solid var(--border);flex-shrink:0;display:block" alt="Isha"></div>
+      <div class="msg-content">
+        <div class="bubble ai">${reply.split('\n').filter(p=>p.trim()).map(p=>`<p class="msg-para">${p}</p>`).join('')}</div>
+        ${buildSuggested(1)}
+      </div>`;
+    cb.appendChild(d); sc();
+  }, 450);
+}
+
 // Keyword bank per question — covers paraphrases, synonyms, casual phrasing
 const Q_KEYWORDS = {
   1:  ['who are you','about you','tell me about yourself','introduce','background','beyond resume','who is isha'],
@@ -1825,6 +1869,7 @@ function findBestQuestionMatch(input){
 function sendCustom(){
   const inp=document.getElementById('chatInp');
   const val=inp.value.trim();if(!val)return;inp.value='';
+  if(isGreeting(val)){handleGreeting(val);return;}
   const matchId = findBestQuestionMatch(val);
   if(matchId){askQ(matchId);return;}
   const landing=document.getElementById('landing');if(landing)landing.remove();
@@ -1833,7 +1878,7 @@ function sendCustom(){
     removeEl(tid);
     const cb=document.getElementById('chatBody');const d=document.createElement('div');
     d.className='msg ai';
-    d.innerHTML=`<div class="av-wrap"><div class="av-ai">🌺</div></div><div class="msg-content"><div class="bubble ai"><p class="msg-para">Great question. Check the questions on the left or reach out directly — <a href="mailto:ishapanchaal26@gmail.com" style="color:var(--primary)">ishapanchaal26@gmail.com</a></p></div>${buildSuggested(1)}</div>`;
+    d.innerHTML=`<div class="av-wrap"><img src="${ASSETS.profile_casual}" style="width:28px;height:28px;border-radius:50%;object-fit:cover;border:1px solid var(--border);flex-shrink:0;display:block" alt="Isha"></div><div class="msg-content"><div class="bubble ai"><p class="msg-para">Great question. Check the questions on the left or reach out directly — <a href="mailto:ishapanchaal26@gmail.com" style="color:var(--primary)">ishapanchaal26@gmail.com</a></p></div>${buildSuggested(1)}</div>`;
     cb.appendChild(d);sc();
   },350);
 }
@@ -1874,6 +1919,7 @@ function globalKey(e){if((e.ctrlKey||e.metaKey)&&e.key==='k'){e.preventDefault()
 function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800);}
 
 init();
+
 
 
 
