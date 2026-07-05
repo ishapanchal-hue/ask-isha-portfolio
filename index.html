@@ -1004,7 +1004,7 @@ function buildAnswerContent(id){
       ${[
         {icon:'🌊', t:'ARGO AI Platform',  tag:'Winner · INTECH 2K26', img:'argo_chat'},
         {icon:'💊', t:'Prescription Scanner', tag:'Healthcare OCR', img:'rx_result'},
-        {icon:'📦', t:'AI Inventory Intelligence', tag:'SIH 2025 Shortlisted', img:'sg_dashboard'},
+        {icon:'📦', t:'AI Inventory Intelligence', tag:'SIH 2025 Shortlisted · Live', img:'sg_dashboard'},
         {icon:'🌱', t:'SmartGrow', tag:'Published · ICCCNT', img:'sg_prototype'},
       ].map((p,i)=>`
         <div onclick="askQ(2);setTimeout(()=>document.getElementById('rightPanel').scrollIntoView&&0,50)" style="display:flex;gap:10px;align-items:center;padding:9px 11px;border-radius:var(--radius);background:var(--surface2);border:1px solid var(--border);animation:fadeUp 0.3s ease forwards;opacity:0;animation-delay:${i*0.07}s;cursor:default">
@@ -1022,6 +1022,7 @@ function buildAnswerContent(id){
     <div class="action-row">
       <a href="https://github.com/ishapanchal-hue" target="_blank" class="act-btn ghost">⚡ GitHub</a>
       <a href="https://nemoai.vercel.app/dashboard" target="_blank" class="act-btn ghost">🌐 ARGO Demo</a>
+      <a href="https://inventory-management-delta-mauve.vercel.app/" target="_blank" class="act-btn ghost">🌐 Inventory Demo</a>
     </div>`;
 
   if(id===3) return `
@@ -1542,7 +1543,7 @@ function rProjects(el){el.innerHTML=`<div class="r-section">
     <div class="proj-tags"><span class="ptag">Next.js</span><span class="ptag">FastAPI</span><span class="ptag">TensorFlow</span><span class="ptag">PostgreSQL</span></div>
     <div class="proj-btns">
       <a href="https://github.com/ishapanchal-hue" target="_blank" class="pbtn ghost">⚡ GitHub</a>
-      <span class="ptag" style="background:var(--primary-soft);color:var(--primary);border-color:rgba(232,83,143,0.2)">🚀 Live demo coming soon</span>
+      <a href="https://inventory-management-delta-mauve.vercel.app/" target="_blank" class="pbtn solid">🌐 Live Demo</a>
     </div>
   </div></div>
   <div class="proj-card">
